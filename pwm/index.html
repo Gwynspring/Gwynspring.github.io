@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Pulsweitenmodulation - MimsRC</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pulsweitenmodulation";
+        var mkdocs_page_input_path = "pwm.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> MimsRC
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">Inhalt</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../languages/">Sprachen</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Pulsweitenmodulation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-ubersicht">1. Übersicht</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-register-uberblick">2. Register Überblick</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-detaillierte-registeranalyse-fur-pwm">3. Detaillierte Registeranalyse für PWM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#31-tccr0a">3.1. TCCR0A</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#32-tccr0b">3.2. TCCR0B</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#33-ocr0a">3.3. OCR0A</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#331-funktion">3.3.1. Funktion</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#332-berechnung-des-vergleichswertes">3.3.2. Berechnung des Vergleichswertes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#34-timsk0">3.4. TIMSK0</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-grafische-darstellung-der-pwm">4. Grafische Darstellung der PWM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#positionen-des-servomotors">Positionen des Servomotors:</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#signal-mit-minimaler-pulsweite-1-ms">Signal mit minimaler Pulsweite (1 ms):</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#signal-mit-maximaler-pulsweite-2-ms">Signal mit maximaler Pulsweite (2 ms):</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-frequenzanalyse-des-pwm-signals">5. Frequenzanalyse des PWM-Signals</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#51-sampling-frequenz-und-auflosung">5.1. Sampling-Frequenz und Auflösung</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#52-spektrumverteilung">5.2. Spektrumverteilung</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#53-charakteristische-frequenzkomponenten">5.3. Charakteristische Frequenzkomponenten</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#54-rauschkomponenten">5.4. Rauschkomponenten</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-programmierung-der-pulsweitenmodulation">6. Programmierung der Pulsweitenmodulation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-quellenangaben">7. Quellenangaben</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">MimsRC</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Pulsweitenmodulation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="timercounter0-fur-die-pulsweitenmodulation-mit-dem-atmega2560">Timer/Counter0 für die Pulsweitenmodulation mit dem Atmega2560</h1>
+<h2 id="1-ubersicht">1. Übersicht</h2>
+<p>Der <strong>Timer/Counter0</strong> ist ein 8-Bit-Zählermodul mit zwei unabhängigen Vergleichseinheiten und Unterstützung für die Pulsweitenmodulation (PWM). Diese Funktion ermöglicht die präzise Steuerung eines generierten Signals.<br />
+Das folgende Blockdiagramm illustriert den Ablauf:</p>
+<p><img alt="Blockdiagramm" src="/site/img/Blockdiagramm.png" /></p>
+<hr />
+<h2 id="2-register-uberblick">2. Register Überblick</h2>
+<p>Die wichtigsten Register sind:</p>
+<ul>
+<li><strong>TCNT0</strong> (Timer/Counter)</li>
+<li><strong>OCR0A</strong> und <strong>OCR0B</strong> (Output Compare Register)</li>
+</ul>
+<p>Diese 8-Bit-Register können individuell programmiert werden. Interrupts werden über das <strong>Timer Interrupt Mask Register (TIMSK0)</strong> konfiguriert.  </p>
+<p>Der Timer/Counter kann mit dem internen Mikrokontroller-Takt oder einem externen Taktgeber am Pin <strong>T0</strong> betrieben werden. Bei Nutzung des internen Takts kann der Prescaler im Register <strong>TCCR0B</strong> angepasst werden, um die Timer-Frequenz zu skalieren. Die Berechnung wird später erläutert.</p>
+<p>Die <strong>OCR0A</strong>- und <strong>OCR0B</strong>-Register werden fortlaufend mit dem Zählerwert verglichen. Das Ergebnis dieses Vergleichs kann zur Signalerzeugung genutzt werden.</p>
+<hr />
+<h2 id="3-detaillierte-registeranalyse-fur-pwm">3. Detaillierte Registeranalyse für PWM</h2>
+<h3 id="31-tccr0a">3.1. <em>TCCR0A</em></h3>
+<p>Im <strong>TCCR0A</strong>-Register wird das Bit <strong>WGM01</strong> gesetzt, um den Timer in den <strong>Clear Timer on Compare Match (CTC)</strong>-Modus zu versetzen. In diesem Modus zählt der Timer bis zu einem definierten Wert und wird anschließend zurückgesetzt.</p>
+<p><img alt="TCCR0A" src="/site/img/TCCR0A.png" /></p>
+<hr />
+<h3 id="32-tccr0b">3.2. <em>TCCR0B</em></h3>
+<p>Im <strong>TCCR0B</strong>-Register wird das Bit <strong>CS01</strong> gesetzt, um den CPU-Takt mit einem Prescaler von 8 zu verwenden.</p>
+<p><img alt="TCCR0B" src="/site/img/TCCR0B.png" /></p>
+<hr />
+<h3 id="33-ocr0a">3.3. <em>OCR0A</em></h3>
+<h4 id="331-funktion">3.3.1. Funktion</h4>
+<p>Das <strong>OCR0A</strong>-Register enthält einen 8-Bit-Wert, der mit dem Zähler verglichen wird. Bei Übereinstimmung kann ein Interrupt ausgelöst werden, der zur PWM genutzt wird. Mit einem Prescaler von 8 wird alle 100 µs ein Interrupt generiert.</p>
+<p><img alt="OCR0A" src="/site/img/OCR0A.png" /></p>
+<hr />
+<h4 id="332-berechnung-des-vergleichswertes">3.3.2. Berechnung des Vergleichswertes</h4>
+<p>Das Ziel ist eine PWM mit 20 Hz für Servomotoren. Die Timer-Frequenz ergibt sich aus dem CPU-Takt und dem Prescaler:</p>
+<p>$$
+f_{\text{timertick}} = \frac{16 \cdot 10^6 \, \text{Hz}}{8} = 2 \cdot 10^6 \, \text{Hz}
+$$</p>
+<p>Ein Timerimpuls wird alle 0,1 ms benötigt:</p>
+<p>$$
+\text{ticks}(x) = f_{\text{timertick}} \cdot x = 2 \cdot 10^6 \cdot 0.1 \cdot 10^{-3} = 200
+$$</p>
+<p>Der Vergleichswert ergibt sich zu:</p>
+<p>$$
+OCR0A = \text{ticks}(x) - 1 = 199
+$$</p>
+<hr />
+<h3 id="34-timsk0">3.4. <em>TIMSK0</em></h3>
+<p>Im <strong>TIMSK0</strong>-Register wird das Bit <strong>OCIE0A</strong> gesetzt, um den Timer0-Interrupt bei einem Compare-Match zu aktivieren.</p>
+<p><img alt="TIMSK0" src="/site/img/TIMSK0.png" /></p>
+<hr />
+<h2 id="4-grafische-darstellung-der-pwm">4. Grafische Darstellung der PWM</h2>
+<p>Der modulierte Signalverlauf über 3,5 ms zeigt unterschiedliche Pulsweiten, die zur Servomotorsteuerung genutzt werden.  </p>
+<h3 id="positionen-des-servomotors">Positionen des Servomotors:</h3>
+<ul>
+<li><strong>0°</strong>: 500 µs</li>
+<li><strong>90°</strong>: 1450 µs</li>
+<li><strong>180°</strong>: 2400 µs</li>
+</ul>
+<h4 id="signal-mit-minimaler-pulsweite-1-ms">Signal mit minimaler Pulsweite (1 ms):</h4>
+<p><img alt="PWM_Min" src="/site/img/Min_PWM_plot.png" /></p>
+<h4 id="signal-mit-maximaler-pulsweite-2-ms">Signal mit maximaler Pulsweite (2 ms):</h4>
+<p><img alt="PWM_Max" src="/site/img/Max_PWM_plot.png" /></p>
+<hr />
+<h2 id="5-frequenzanalyse-des-pwm-signals">5. Frequenzanalyse des PWM-Signals</h2>
+<h3 id="51-sampling-frequenz-und-auflosung">5.1. Sampling-Frequenz und Auflösung</h3>
+<ul>
+<li>Die Sampling-Frequenz <strong>f_s = 3,13 MS/s</strong> erfüllt das Nyquist-Theorem: 
+$$
+f_s &gt; 2 \cdot f_{\text{signal}}
+$$</li>
+</ul>
+<h3 id="52-spektrumverteilung">5.2. Spektrumverteilung</h3>
+<ul>
+<li>Stark gedämpft im höheren Frequenzbereich (&lt; -60 dB).</li>
+</ul>
+<h3 id="53-charakteristische-frequenzkomponenten">5.3. Charakteristische Frequenzkomponenten</h3>
+<ul>
+<li>Dominante Grundfrequenz sichtbar bei niedriger Frequenz.</li>
+</ul>
+<h3 id="54-rauschkomponenten">5.4. Rauschkomponenten</h3>
+<ul>
+<li>Hohes Grundrauschen, besonders bei Frequenzen &gt; 0.5 MHz.</li>
+</ul>
+<p><img alt="PWM_Frequenz" src="/site/img/Frequenz_analyse.png" /></p>
+<hr />
+<h2 id="6-programmierung-der-pulsweitenmodulation">6. Programmierung der Pulsweitenmodulation</h2>
+<h2 id="7-quellenangaben">7. Quellenangaben</h2>
+<ul>
+<li>
+<p><a href="https://ww1.microchip.com/downloads/en/devicedoc/Atmel-8272-8-bit-AVR-microcontroller-ATmega164A_PA-324A_PA-644A_PA-1284_P_summary.pdf">Datenblatt 8-bit Atmel Microcontroller</a></p>
+</li>
+<li>
+<p><a href="https://www.mikrocontroller.net/articles/AVR-GCC-Tutorial/Die_Timer_und_Z%C3%A4hler_des_AVR">Prescaler Konfiguration</a></p>
+</li>
+<li>
+<p><a href="https://de.wikipedia.org/wiki/Nyquist-Frequenz">Nyquist-Frequenz</a></p>
+</li>
+<li>
+<p><a href="https://github.com/curiores/ArduinoTutorials/blob/main/BasicFilters/Design/LowPass/LowPassFilter.ipynb">FFT und LowPass Filter Curio Res</a></p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../languages/" class="btn btn-neutral float-left" title="Sprachen"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../languages/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
