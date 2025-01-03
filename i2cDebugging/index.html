@@ -12,13 +12,15 @@
         <link rel="prev" href="../pwm/">
       
       
+        <link rel="next" href="../ref/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
-        <title>I2Cdebugging - MimsRC</title>
+        <title>I2C - MimsRC</title>
       
     
     
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              I2Cdebugging
+              I2C
             
           </span>
         </div>
@@ -498,6 +500,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ref/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quellen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -686,7 +708,6 @@
 <li>Übertragung und Verarbeitung der Messsignale</li>
 <li>Ausgabe und Darstellung der gewonnenen Information</li>
 </ul>
-<hr />
 <h2 id="2-theoretische-grundlagen">2. Theoretische Grundlagen</h2>
 <p>I²C ist ein Protokoll, das zwei Leitungen, <em>Serial Data Line (SDA)</em> und <em>Serial Clock Line (SCL)</em>, für die Kommunikation verwendet. Das Protokoll unterstützt mehrere Teilnehmer und auch mehrere Controller auf einem Kommunikationsbus, die Daten und Steuersignale senden und empfangen. Die Kommunikation findet über Byte-Pakete mit einer einmaligen Adresse für jeden Teilnehmer statt.</p>
 <h3 id="geschwindigkeitsmodi">Geschwindigkeitsmodi</h3>
@@ -718,7 +739,6 @@
 <p><strong>Abb. 1.3</strong>: Start- und Stoppvorgang der Kommunikation</p>
 <p><img alt="StartStopp" src="../img/StartStopp.png" /></p>
 <p><em>Quelle: <a href="https://www.ti.com/lit/an/sbaa565/sbaa565.pdf">Texas Instruments</a></em></p>
-<hr />
 <h2 id="3-bauelementdaten">3. Bauelementdaten</h2>
 <p>Verwendete Bauteile:</p>
 <ul>
@@ -729,11 +749,9 @@
 <li>L3GD20H Gyrosensor</li>
 <li>Oled Display 0,96 Zoll</li>
 </ul>
-<hr />
 <h2 id="4-messung-mit-dem-oszilloskop">4. Messung mit dem Oszilloskop</h2>
 <p><strong>Abb. 2.3</strong>: Ausschnitt einer Mussung der I²C Kommunikation</p>
 <p><img alt="AufgezeichnetesSignal" src="../img/AufgezeichnetesSignal.png" /></p>
-<hr />
 <h2 id="5-messergebnisse-und-programmierung">5. Messergebnisse und Programmierung</h2>
 <h3 id="pandas">Pandas</h3>
 <p>Das <strong>Pandas</strong>-Framework wird verwendet, um die <code>.csv</code>-Datei zu importieren und zu lesen, die aus der PicoScope7-Software exportiert wurde. Die Datei enthält 64 Buffer-Nummern und zeigt die Kommunikation zwischen dem Arduino Mega und den verwendeten Sensoren. Mit Pandas lassen sich die Daten einfach anzeigen und analysieren.</p>
@@ -783,9 +801,6 @@
 
 
 
-
-  
-  
 
 
 

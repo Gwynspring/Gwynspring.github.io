@@ -444,30 +444,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Positionen des Servomotors:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#signal-mit-minimaler-pulsweite-1-ms" class="md-nav__link">
-    <span class="md-ellipsis">
-      Signal mit minimaler Pulsweite (1 ms):
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#signal-mit-maximaler-pulsweite-2-ms" class="md-nav__link">
-    <span class="md-ellipsis">
-      Signal mit maximaler Pulsweite (2 ms):
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -564,6 +540,26 @@
   
   <span class="md-ellipsis">
     I2C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ref/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quellen
   </span>
   
 
@@ -708,30 +704,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Positionen des Servomotors:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#signal-mit-minimaler-pulsweite-1-ms" class="md-nav__link">
-    <span class="md-ellipsis">
-      Signal mit minimaler Pulsweite (1 ms):
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#signal-mit-maximaler-pulsweite-2-ms" class="md-nav__link">
-    <span class="md-ellipsis">
-      Signal mit maximaler Pulsweite (2 ms):
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -827,7 +799,8 @@
 <h2 id="1-ubersicht">1. Übersicht</h2>
 <p>Der <strong>Timer/Counter0</strong> ist ein 8-Bit-Zählermodul mit zwei unabhängigen Vergleichseinheiten und Unterstützung für die Pulsweitenmodulation (PWM). Diese Funktion ermöglicht die präzise Steuerung eines generierten Signals.<br />
 Das folgende Blockdiagramm illustriert den Ablauf:</p>
-<p><img alt="Blockdiagramm" src="../img/Blockdiagramm.png" /></p>
+<p><strong>Abb. 1.1</strong>: Blockdiagramm
+<img alt="Blockdiagramm" src="../img/Blockdiagramm.png" /></p>
 <h2 id="2-register-uberblick">2. Register Überblick</h2>
 <p>Die wichtigsten Register sind:</p>
 <ul>
@@ -840,14 +813,17 @@ Das folgende Blockdiagramm illustriert den Ablauf:</p>
 <h2 id="3-detaillierte-registeranalyse-fur-pwm">3. Detaillierte Registeranalyse für PWM</h2>
 <h3 id="31-tccr0a">3.1. <em>TCCR0A</em></h3>
 <p>Im <strong>TCCR0A</strong>-Register wird das Bit <strong>WGM01</strong> gesetzt, um den Timer in den <strong>Clear Timer on Compare Match (CTC)</strong>-Modus zu versetzen. In diesem Modus zählt der Timer bis zu einem definierten Wert und wird anschließend zurückgesetzt.</p>
-<p><img alt="TCCR0A" src="../img/TCCR0A.png" /></p>
+<p><strong>Abb. 3.1</strong>: TCCR0A
+<img alt="TCCR0A" src="../img/TCCR0A.png" /></p>
 <h3 id="32-tccr0b">3.2. <em>TCCR0B</em></h3>
 <p>Im <strong>TCCR0B</strong>-Register wird das Bit <strong>CS01</strong> gesetzt, um den CPU-Takt mit einem Prescaler von 8 zu verwenden.</p>
-<p><img alt="TCCR0B" src="../img/TCCR0B.png" /></p>
+<p><strong>Abb. 3.2</strong>: TCCR0B
+<img alt="TCCR0B" src="../img/TCCR0B.png" /></p>
 <h3 id="33-ocr0a">3.3. <em>OCR0A</em></h3>
 <h4 id="331-funktion">3.3.1. Funktion</h4>
 <p>Das <strong>OCR0A</strong>-Register enthält einen 8-Bit-Wert, der mit dem Zähler verglichen wird. Bei Übereinstimmung kann ein Interrupt ausgelöst werden, der zur PWM genutzt wird. Mit einem Prescaler von 8 wird alle 100 µs ein Interrupt generiert.</p>
-<p><img alt="OCR0A" src="../img/OCR0A.png" /></p>
+<p><strong>Abb. 3.3</strong>: OCR0A
+<img alt="OCR0A" src="../img/OCR0A.png" /></p>
 <h4 id="332-berechnung-des-vergleichswertes">3.3.2. Berechnung des Vergleichswertes</h4>
 <p>Das Ziel ist eine PWM mit 20 Hz für Servomotoren. Die Timer-Frequenz ergibt sich aus dem CPU-Takt und dem Prescaler:</p>
 <div class="arithmatex">\[
@@ -863,7 +839,8 @@ OCR0A = \text{ticks}(x) - 1 = 199
 \]</div>
 <h3 id="34-timsk0">3.4. <em>TIMSK0</em></h3>
 <p>Im <strong>TIMSK0</strong>-Register wird das Bit <strong>OCIE0A</strong> gesetzt, um den Timer0-Interrupt bei einem Compare-Match zu aktivieren.</p>
-<p><img alt="TIMSK0" src="../img/TIMSK0.png" /></p>
+<p><strong>Abb. 3.4</strong>: TCCR0B
+<img alt="TIMSK0" src="../img/TIMSK0.png" /></p>
 <h2 id="4-grafische-darstellung-der-pwm">4. Grafische Darstellung der PWM</h2>
 <p>Der modulierte Signalverlauf über 3,5 ms zeigt unterschiedliche Pulsweiten, die zur Servomotorsteuerung genutzt werden.  </p>
 <h3 id="positionen-des-servomotors">Positionen des Servomotors:</h3>
@@ -872,10 +849,10 @@ OCR0A = \text{ticks}(x) - 1 = 199
 <li><strong>90°</strong>: 1450 µs</li>
 <li><strong>180°</strong>: 2400 µs</li>
 </ul>
-<h4 id="signal-mit-minimaler-pulsweite-1-ms">Signal mit minimaler Pulsweite (1 ms):</h4>
-<p><img alt="PWM_Min" src="../img/Min_PWM_plot.png" /></p>
-<h4 id="signal-mit-maximaler-pulsweite-2-ms">Signal mit maximaler Pulsweite (2 ms):</h4>
-<p><img alt="PWM_Max" src="../img/Max_PWM_plot.png" /></p>
+<p><strong>Abb. 4.1</strong>: Signal mit minimaler Pulsweite (1 ms)
+<img alt="PWM_Min" src="../img/Min_PWM_plot.png" /></p>
+<p><strong>Abb. 4.2</strong>: Signal mit maximaler Pulsweite (2 ms)
+<img alt="PWM_Max" src="../img/Max_PWM_plot.png" /></p>
 <h2 id="5-frequenzanalyse-des-pwm-signals">5. Frequenzanalyse des PWM-Signals</h2>
 <h3 id="51-sampling-frequenz-und-auflosung">5.1. Sampling-Frequenz und Auflösung</h3>
 <ul>
@@ -896,7 +873,8 @@ $$</li>
 <ul>
 <li>Hohes Grundrauschen, besonders bei Frequenzen &gt; 0.5 MHz.</li>
 </ul>
-<p><img alt="PWM_Frequenz" src="../img/Frequenz_analyse.png" /></p>
+<p><strong>Abb. 5.1</strong> Analyse der Frequenzen
+<img alt="PWM_Frequenz" src="../img/Frequenz_analyse.png" /></p>
 <h2 id="6-programmierung-der-pulsweitenmodulation">6. Programmierung der Pulsweitenmodulation</h2>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;RS232.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ADU_ATMEGA2560 V21.h&quot;</span>
