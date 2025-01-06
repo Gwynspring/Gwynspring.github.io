@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../../language_tools/kicad/">
+        <link rel="prev" href="../../assets/components/">
       
       
         <link rel="next" href="../i2cDebugging/">
@@ -45,6 +45,8 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../../assets/css/custom.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -580,6 +582,26 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assets/components/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bauteile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -718,6 +740,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-versuchsaufbau" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Versuchsaufbau
+    </span>
+  </a>
   
 </li>
       
@@ -973,6 +1004,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#5-versuchsaufbau" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Versuchsaufbau
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#4-grafische-darstellung-der-pwm" class="md-nav__link">
     <span class="md-ellipsis">
       4. Grafische Darstellung der PWM
@@ -1120,6 +1160,9 @@ OCR0A = \text{ticks}(x) - 1 = 199
 <p>Im <strong>TIMSK0</strong>-Register wird das Bit <strong>OCIE0A</strong> gesetzt, um den Timer0-Interrupt bei einem Compare-Match zu aktivieren.</p>
 <p><strong>Abb. 3.4</strong>: TCCR0B
 <img alt="TIMSK0" src="../img/TIMSK0.png" /></p>
+<h2 id="5-versuchsaufbau">5. Versuchsaufbau</h2>
+<p><strong>Abb. 5.1</strong>: Messung der Pulsweitenmodulation für einen Servomotor
+<img alt="PWM_Messung" src="../img/PWM_Oszi.png" /></p>
 <h2 id="4-grafische-darstellung-der-pwm">4. Grafische Darstellung der PWM</h2>
 <p>Der modulierte Signalverlauf über 3,5 <span class="arithmatex">\(ms\)</span> zeigt unterschiedliche Pulsweiten, die zur Servomotorsteuerung genutzt werden.</p>
 <h3 id="positionen-des-servomotors">Positionen des Servomotors:</h3>

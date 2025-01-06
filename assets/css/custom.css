@@ -1,0 +1,45 @@
+table {
+    background-color: var(--md-default-bg-color); 
+    color: var(--md-default-fg-color); 
+    font-family: Helvetica, sans-serif;
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+table, th, td {
+    border: 1px solid var(--md-default-border-color); 
+}
+
+/* Tabellenkopf */
+thead th {
+    background-color: var(--md-primary-fg-color); 
+    color: var(--md-default-bg-color); 
+    text-align: left;
+    padding: 8px;
+    font-weight: bold;
+}
+
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--md-code-bg-color); 
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--md-default-bg-color); 
+}
+
+tbody tr:hover {
+    background-color: var(--md-primary-bg-color); 
+    color: var(--md-primary-fg-color); 
+}
+
+table {
+    display: block;
+    overflow-x: auto; 
+    white-space: nowrap; 
+}
+
