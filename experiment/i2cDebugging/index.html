@@ -1068,11 +1068,11 @@
 <li>OLED Display 0,96 Zoll</li>
 </ul>
 <h2 id="4-messung-mit-dem-oszilloskop">4. Messung mit dem Oszilloskop</h2>
-<p><strong>Abb. 2.3:</strong> Versuchsaufbau</p>
-<p><img alt="Versuchsaufbau" src="../img/Messspitzen.png" /></p>
+<p><strong>Abb. 2.3:</strong> Versuchsaufbau
+<img alt="Versuchsaufbau" src="../img/Testaufbau.png" /></p>
 <p><strong>Abb. 2.4:</strong> Detailansicht der Messspitzen</p>
-<p><img alt="Versuchsaufbau" src="../img/Testaufbau.png" /></p>
-<p><strong>Abb. 2.5:</strong> Ausschnitt einer Messung der I²C-Kommunikation</p>
+<p><img alt="Detail" src="../img/Messspitzen.png" /></p>
+<p><strong>Abb. 2.5:</strong> Ausschnitt einer Messung der I²C-Kommunikation mit dem Oszilloskop</p>
 <p><img alt="AufgezeichnetesSignal" src="../img/AufgezeichnetesSignal.png" /></p>
 <h2 id="5-messergebnisse-und-programmierung">5. Messergebnisse und Programmierung</h2>
 <h3 id="pandas">Pandas</h3>
@@ -1081,42 +1081,51 @@
 <p>Für die Analyse und Visualisierung der Daten wurde <strong>Seaborn</strong>, eine auf <strong>Matplotlib</strong> basierende Python-Bibliothek, verwendet. Seaborn bietet eine benutzerfreundliche Schnittstelle für das Erstellen attraktiver und informativer statistischer Grafiken.</p>
 <p><img alt="I2CKommunikation" src="../img/I2C_MimsRC_Decoding.png" /></p>
 <p><img alt="I2CKommunikation" src="../img/I2C_MimsRC_R_W.png" /></p>
-<p>```python
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns</p>
-<h1 id="csv-datei-laden">CSV-Datei laden</h1>
-<p>df = pd.read_csv("/path/to/your/file.csv")</p>
-<h1 id="uberprufen-auf-fehlende-werte">Überprüfen auf fehlende Werte</h1>
-<p>print(df.isna())
-print(df.dropna())</p>
-<h1 id="farbschema-festlegen">Farbschema festlegen</h1>
-<p>cmap = plt.get_cmap('viridis')</p>
-<h1 id="histogramm-der-i2c-adressen">Histogramm der I²C-Adressen</h1>
-<p>sns.histplot(data=df, x="Address", hue='Address', palette='Set1')
-plt.grid(True, axis='x', linestyle='')
-plt.xlabel("Adressen")
-plt.ylabel("Anzahl der Übertragungen")
-sns.set_style('whitegrid')
-plt.gca().set_facecolor('#F7F7F7')</p>
-<h1 id="speichern-und-anzeigen-des-diagramms">Speichern und Anzeigen des Diagramms</h1>
-<p>plt.savefig("/path/to/save/directory/I2C_MimsRC_Decoding")
-plt.show()</p>
-<h1 id="anzahl-der-lese-und-schreibvorgange">Anzahl der Lese- und Schreibvorgänge</h1>
-<p>plt.title("Anzahl der Lese- und Schreibvorgänge")
-sns.barplot(data=df["R/W"].value_counts(), palette="deep")
-sns.set_style('whitegrid')
-plt.gca().set_facecolor('#F7F7F7')
-plt.ylabel("Anzahl der Vorgänge")</p>
-<h1 id="speichern-und-anzeigen-des-diagramms_1">Speichern und Anzeigen des Diagramms</h1>
-<p>plt.savefig("/path/to/save/directory/I2C_MimsRC_R_W")
-plt.show()</p>
-<h1 id="berechnung-der-zeitdifferenz">Berechnung der Zeitdifferenz</h1>
-<p>df['Time'] = df["End Time"] - df["Start Time"]
-print(df['Time'])</p>
-<h1 id="gesamtdauer-der-messung">Gesamtdauer der Messung</h1>
-<p>duration = df['Time'].sum()
-print(f'Länge der Messung: {duration * 1000} ms')</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># CSV-Datei laden</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/path/to/your/file.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Überprüfen auf fehlende Werte</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+
+<span class="c1"># Farbschema festlegen</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+
+<span class="c1"># Histogramm der I²C-Adressen</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Address&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Adressen&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Anzahl der Übertragungen&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;#F7F7F7&#39;</span><span class="p">)</span>
+
+<span class="c1"># Speichern und Anzeigen des Diagramms</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/path/to/save/directory/I2C_MimsRC_Decoding&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Anzahl der Lese- und Schreibvorgänge</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Anzahl der Lese- und Schreibvorgänge&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;R/W&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;deep&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;#F7F7F7&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Anzahl der Vorgänge&quot;</span><span class="p">)</span>
+
+<span class="c1"># Speichern und Anzeigen des Diagramms</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/path/to/save/directory/I2C_MimsRC_R_W&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Berechnung der Zeitdifferenz</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;End Time&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Start Time&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">])</span>
+
+<span class="c1"># Gesamtdauer der Messung</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Länge der Messung: </span><span class="si">{</span><span class="n">duration</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="si">}</span><span class="s1"> ms&#39;</span><span class="p">)</span>
+</code></pre></div>
 
 
 
