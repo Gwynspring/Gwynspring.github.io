@@ -251,7 +251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1028,35 +1028,41 @@
 <li>Ausgabe und Darstellung der gewonnenen Informationen</li>
 </ul>
 <h2 id="2-theoretische-grundlagen">2. Theoretische Grundlagen</h2>
-<p>I²C ist ein Kommunikationsprotokoll, das zwei Leitungen – <em>Serial Data Line (SDA)</em> und <em>Serial Clock Line (SCL)</em> – verwendet. Das Protokoll ermöglicht die Kommunikation zwischen mehreren Geräten, bei der jedes Gerät eine eindeutige Adresse hat. Es unterstützt die Übertragung von Daten in Form von Byte-Paketen.</p>
+<p>I²C ist ein Kommunikationsprotokoll, das zwei Leitungen – <em>Serial Data Line (SDA)</em> und <em>Serial Clock Line (SCL)</em> – verwendet. 
+Das Protokoll ermöglicht die Kommunikation zwischen mehreren Geräten, bei der jedes Gerät eine eindeutige Adresse hat. 
+Es unterstützt die Übertragung von Daten in Form von Byte-Paketen.</p>
 <h3 id="geschwindigkeitsmodi">Geschwindigkeitsmodi</h3>
 <p>I²C-Kommunikation kann in den folgenden drei Modi erfolgen:</p>
 <ul>
-<li><strong>Standard-mode (Sm):</strong> 100 kbit/s</li>
-<li><strong>Fast-mode (Fm):</strong> 400 kbit/s</li>
-<li><strong>Fast-mode Plus (Fm+):</strong> 1 Mbit/s</li>
+<li><strong>Standardmode (Sm):</strong> 100 kbit/s</li>
+<li><strong>Fastmode (Fm):</strong> 400 kbit/s</li>
+<li><strong>Fastmode Plus (Fm+):</strong> 1 Mbit/s</li>
 </ul>
 <p><strong>Abb. 1.1:</strong> Gegenüberstellung der Geschwindigkeitsmodi</p>
-<p><img alt="SpeedModes" src="../img/SpeedModes.png" /></p>
+<p><img alt="SpeedModes" src="../img/SpeedModes.png" />
+Quelle: Wu, Joseph, 2022, S.3</p>
 <h3 id="aufbau-des-i2c-bus">Aufbau des I²C-Bus</h3>
 <p><strong>Abb. 1.2:</strong> Schematischer Aufbau eines I²C Bussystems</p>
 <p><img alt="AufbauBus" src="../img/AufbauBus.png" /></p>
+<p>(vgl. ebd.,S.4, Figure 2-1)</p>
 <h3 id="scl-serial-clock">SCL (Serial Clock)</h3>
 <p>Die SCL-Leitung ist für den Takt der Kommunikation verantwortlich und wird vom Master gesteuert. Sie gibt den Rhythmus für die Datenübertragung vor.</p>
 <h3 id="sda-serial-data">SDA (Serial Data)</h3>
 <p>Die SDA-Leitung überträgt die eigentlichen Daten zwischen den Geräten. Ein Controller kann Ausgabewerte an einen DAC senden oder Daten von einem ADC empfangen.</p>
 <h3 id="halbduplex-vs-vollduplex">Halbduplex vs. Vollduplex</h3>
 <p>I²C ist ein halbduplexes Kommunikationsprotokoll, bei dem Daten nur in eine Richtung gleichzeitig fließen können. Im Gegensatz dazu ist SPI ein vollduplexes Protokoll, das gleichzeitige Datenübertragungen in beide Richtungen ermöglicht.</p>
-<p><strong>Vorteile von I²C:</strong>
-- Geringer Verdrahtungsaufwand
-- Weniger benötigte Pins am Mikrocontroller</p>
+<p><strong>Vorteile von I²C:</strong></p>
+<ul>
+<li>Geringer Verdrahtungsaufwand</li>
+<li>Weniger benötigte Pins am Mikrocontroller</li>
+</ul>
 <h3 id="i2c-adressierung-und-busstruktur">I²C Adressierung und Busstruktur</h3>
 <p>Der I²C-Bus nutzt eine Master-Slave-Struktur, wobei der Master die Kommunikation initiiert und steuert. Jedes Gerät auf dem Bus hat eine eindeutige Adresse, die es ihm ermöglicht, mit anderen Geräten zu kommunizieren. Die SDA- und SCL-Leitungen sind mit allen Geräten auf dem Bus über Open-Drain-Verbindungen verbunden, was Pull-up-Widerstände erfordert.</p>
 <h3 id="i2c-start-und-stoppbedingungen">I²C Start- und Stoppbedingungen</h3>
 <p>Die Kommunikation wird mit einer <strong>START-Bedingung</strong> eingeleitet, wobei der Master die SDA-Leitung auf Low und dann die SCL-Leitung auf Low zieht. Die Kommunikation endet mit einer <strong>STOP-Bedingung</strong>, bei der beide Leitungen auf High gesetzt werden, um den Bus freizugeben.</p>
 <p><strong>Abb. 1.3:</strong> Start- und Stoppvorgang der Kommunikation</p>
-<p><img alt="StartStopp" src="../img/StartStopp.png" /></p>
-<p><em>Quelle: <a href="https://www.ti.com/lit/an/sbaa565/sbaa565.pdf">Texas Instruments</a></em></p>
+<p><img alt="StartStopp" src="../img/StartStopp.png" />
+(vgl. ebd.,S.7, Figure 3-1)</p>
 <h2 id="3-bauelementdaten">3. Bauelementdaten</h2>
 <p>Verwendete Bauteile:</p>
 <ul>
@@ -1172,7 +1178,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "content.footnote.tooltips"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
