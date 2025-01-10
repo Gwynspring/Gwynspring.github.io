@@ -1119,7 +1119,8 @@
 <p>Der <strong>Timer/Counter0</strong> ist ein 8-Bit-Zählermodul mit zwei unabhängigen Vergleichseinheiten und Unterstützung für die Pulsweitenmodulation (PWM). Diese Funktion ermöglicht die präzise Steuerung eines generierten Signals.<br />
 Das folgende Blockdiagramm illustriert den Ablauf:</p>
 <p><strong>Abb. 1.1</strong>: Blockdiagramm
-<img alt="Blockdiagramm" src="../img/Blockdiagramm.png" /></p>
+<img alt="Blockdiagramm" src="../img/Blockdiagramm.png" />
+Quelle: ATmega Datenblatt, 2014, S.115, Figure 16-1</p>
 <h2 id="2-register-uberblick">2. Register Überblick</h2>
 <p>Die wichtigsten Register sind:</p>
 <ul>
@@ -1133,16 +1134,19 @@ Das folgende Blockdiagramm illustriert den Ablauf:</p>
 <h3 id="31-tccr0a">3.1. <em>TCCR0A</em></h3>
 <p>Im <strong>TCCR0A</strong>-Register wird das Bit <strong>WGM01</strong> gesetzt, um den Timer in den <strong>Clear Timer on Compare Match (CTC)</strong>-Modus zu versetzen. In diesem Modus zählt der Timer bis zu einem definierten Wert und wird anschließend zurückgesetzt.</p>
 <p><strong>Abb. 3.1</strong>: TCCR0A
-<img alt="TCCR0A" src="../img/TCCR0A.png" /></p>
+<img alt="TCCR0A" src="../img/TCCR0A.png" />
+(vgl. ebd.,S.126)</p>
 <h3 id="32-tccr0b">3.2. <em>TCCR0B</em></h3>
 <p>Im <strong>TCCR0B</strong>-Register wird das Bit <strong>CS01</strong> gesetzt, um den CPU-Takt mit einem Prescaler von 8 zu verwenden.</p>
 <p><strong>Abb. 3.2</strong>: TCCR0B
-<img alt="TCCR0B" src="../img/TCCR0B.png" /></p>
+<img alt="TCCR0B" src="../img/TCCR0B.png" />
+(vgl. ebd.,S.129)</p>
 <h3 id="33-ocr0a">3.3. <em>OCR0A</em></h3>
 <h4 id="331-funktion">3.3.1. Funktion</h4>
 <p>Das <strong>OCR0A</strong>-Register enthält einen 8-Bit-Wert, der mit dem Zähler verglichen wird. Bei Übereinstimmung kann ein Interrupt ausgelöst werden, der zur PWM genutzt wird. Mit einem Prescaler von 8 wird alle 100 <span class="arithmatex">\(µs\)</span> ein Interrupt generiert.</p>
 <p><strong>Abb. 3.3</strong>: OCR0A
-<img alt="OCR0A" src="../img/OCR0A.png" /></p>
+<img alt="OCR0A" src="../img/OCR0A.png" />
+(vgl. ebd.,S.130)</p>
 <h4 id="332-berechnung-des-vergleichswertes">3.3.2. Berechnung des Vergleichswertes</h4>
 <p>Das Ziel ist eine PWM mit 20 <span class="arithmatex">\(Hz\)</span> für Servomotoren. Die Timer-Frequenz ergibt sich aus dem CPU-Takt und dem Prescaler:</p>
 <div class="arithmatex">\[
@@ -1158,8 +1162,9 @@ OCR0A = \text{ticks}(x) - 1 = 199
 \]</div>
 <h3 id="34-timsk0">3.4. <em>TIMSK0</em></h3>
 <p>Im <strong>TIMSK0</strong>-Register wird das Bit <strong>OCIE0A</strong> gesetzt, um den Timer0-Interrupt bei einem Compare-Match zu aktivieren.</p>
-<p><strong>Abb. 3.4</strong>: TCCR0B
-<img alt="TIMSK0" src="../img/TIMSK0.png" /></p>
+<p><strong>Abb. 3.4</strong>: TIMSK0
+<img alt="TIMSK0" src="../img/TIMSK0.png" />
+(vgl. ebd.,S.131)</p>
 <h2 id="5-versuchsaufbau">5. Versuchsaufbau</h2>
 <p><strong>Abb. 5.1</strong>: Messung der Pulsweitenmodulation für einen Servomotor
 <img alt="PWM_Messung" src="../img/PWM_Oszi.png" /></p>
@@ -1324,7 +1329,7 @@ OCR0A = \text{ticks}(x) - 1 = 199
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "content.footnote.tooltips"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "content.footnote.tooltips", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
