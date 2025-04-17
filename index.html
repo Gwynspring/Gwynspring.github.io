@@ -325,15 +325,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#motors" class="md-nav__link">
-    <span class="md-ellipsis">
-      Motors
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#credits" class="md-nav__link">
     <span class="md-ellipsis">
       Credits
@@ -540,15 +531,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#motors" class="md-nav__link">
-    <span class="md-ellipsis">
-      Motors
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#credits" class="md-nav__link">
     <span class="md-ellipsis">
       Credits
@@ -586,31 +568,29 @@
 <h2 id="overview"><strong>Overview</strong></h2>
 <p>This repository contains the code and documentation for my diploma project at HTL Bulme. The goal of this project is to design and implement a robust sensor integration and communication system for a rescue robot.<br />
 The system integrates multiple sensors, such as Time-of-Flight (ToF) sensors, the TCS34725 RGB module, and the L3GD20H gyroscope, using the I2C communication protocol.  </p>
-<p>Letter and color recognition is implemented using the OpenMV Cam H7. 
-Most of the tools used in this project come from the open-source community and can be built without purchasing additional software.  </p>
+<p>Most of the tools used in this project come from the open-source community, or at least are free available, and can be built without purchasing additional software.  </p>
 <p>By sharing this project, I aim to contribute to the community.<br />
 Feel free to copy, modify, and experiment with the code. If you encounter any issues, please open an issue, and I will work on fixing the bug.  </p>
 <h3 id="features"><strong>Features</strong></h3>
 <ul>
-<li><strong>Time-of-Flight (ToF) Distance Measurement</strong>: High-precision distance measurement using ToF sensors.  </li>
-<li><strong>Gyroscope Data Acquisition</strong>: Integration of the L3GD20H gyroscope for angular velocity measurements, with customizable settings for sensitivity and motor control.  </li>
+<li><strong>Time-of-Flight (ToF) Distance Measurement</strong></li>
+<li><strong>Gyroscope Data Acquisition</strong></li>
+<li><strong>Mapping algorithm for searching a labyrinth</strong></li>
 <li><strong>Custom I2C Addressing</strong>: Dynamic configuration of I2C addresses for multiple sensors on the same bus, ensuring seamless communication.  </li>
 <li><strong>Multi-Pin I2C Implementation</strong>: Utilizing the SoftWire library to run I2C on different pins of the Arduino Mega.  </li>
 <li><strong>Documentation &amp; Prototyping Tools</strong>: Includes documentation of the used equipment and helpful scripts.  </li>
 <li><strong>AI-Based Letter Recognition</strong>: A custom-trained model using Edge Impulse for letter recognition.  </li>
 <li><strong>Datasheets</strong>: Collection of datasheets for the sensors and microcontrollers used in the project.  </li>
 <li><strong>Serial Communication</strong>: Implemented serial communication between the Arduino and OpenMV Cam.  </li>
-<li><strong>PWM Control</strong>: Flexible functions for Pulse Width Modulation (PWM).  </li>
+<li><strong>PWM Control</strong>: Flexible functions for Pulse Width Modulation (PWM).</li>
 </ul>
-<h3 id="motors"><strong>Motors</strong></h3>
-<p>Control of four DF Robot 6V DC motors with encoders and a PID control system.  </p>
 <p>Switching between driving modes:</p>
 <ul>
 <li><strong>Gyroscope-based navigation</strong>  </li>
 <li><strong>ToF-based navigation</strong>  </li>
 </ul>
 <h3 id="credits"><strong>Credits</strong></h3>
-<p>This project was developed as part of my diploma thesis at HTL Bulme Graz Gösting, with guidance and support from my teachers. Special thanks to the open-source community for providing the software and knowledge that made this project possible.</p>
+<p>This project was developed as part of my diploma thesis at HTL Bulme Graz-Gösting, with guidance and support from my teachers and fellow members of the RoboCup team. Special thanks to the open-source community for providing the software and knowledge that made this project possible.</p>
 
 
 
